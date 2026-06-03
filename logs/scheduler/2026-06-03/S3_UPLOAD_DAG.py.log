@@ -1,0 +1,133 @@
+[2026-06-03T15:37:07.962+0000] {processor.py:157} INFO - Started process (PID=617) to work on /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:37:07.963+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/S3_UPLOAD_DAG.py for tasks to queue
+[2026-06-03T15:37:07.965+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:37:07.964+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:37:07.998+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:37:08.158+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:37:08.158+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-03T15:37:08.187+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:37:08.186+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-03T14:52:05.384041+00:00, run_after=2026-06-04T14:52:05.384041+00:00
+[2026-06-03T15:37:08.210+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/S3_UPLOAD_DAG.py took 0.255 seconds
+[2026-06-03T15:37:28.038+0000] {processor.py:157} INFO - Started process (PID=622) to work on /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:37:28.038+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/S3_UPLOAD_DAG.py for tasks to queue
+[2026-06-03T15:37:28.039+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:37:28.039+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:37:28.057+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:37:28.069+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:37:28.069+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-03T15:37:28.098+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:37:28.097+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-03T14:52:05.384041+00:00, run_after=2026-06-04T14:52:05.384041+00:00
+[2026-06-03T15:37:28.120+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/S3_UPLOAD_DAG.py took 0.086 seconds
+[2026-06-03T15:37:35.169+0000] {processor.py:157} INFO - Started process (PID=627) to work on /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:37:35.170+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/S3_UPLOAD_DAG.py for tasks to queue
+[2026-06-03T15:37:35.171+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:37:35.170+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:37:35.190+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:37:35.202+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:37:35.202+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-03T15:37:35.229+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:37:35.229+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-03T14:52:05.384041+00:00, run_after=2026-06-04T14:52:05.384041+00:00
+[2026-06-03T15:37:35.249+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/S3_UPLOAD_DAG.py took 0.084 seconds
+[2026-06-03T15:37:36.219+0000] {processor.py:157} INFO - Started process (PID=643) to work on /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:37:36.222+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/S3_UPLOAD_DAG.py for tasks to queue
+[2026-06-03T15:37:36.225+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:37:36.223+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:37:36.273+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:37:36.292+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:37:36.291+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-03T15:37:36.322+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:37:36.322+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-03T14:52:05.384041+00:00, run_after=2026-06-04T14:52:05.384041+00:00
+[2026-06-03T15:37:36.340+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/S3_UPLOAD_DAG.py took 0.133 seconds
+[2026-06-03T15:37:38.290+0000] {processor.py:157} INFO - Started process (PID=648) to work on /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:37:38.293+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/S3_UPLOAD_DAG.py for tasks to queue
+[2026-06-03T15:37:38.294+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:37:38.294+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:37:38.309+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:37:38.329+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:37:38.329+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-03T15:37:38.347+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:37:38.346+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-03T14:52:05.384041+00:00, run_after=2026-06-04T14:52:05.384041+00:00
+[2026-06-03T15:37:38.362+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/S3_UPLOAD_DAG.py took 0.075 seconds
+[2026-06-03T15:38:08.532+0000] {processor.py:157} INFO - Started process (PID=653) to work on /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:38:08.533+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/S3_UPLOAD_DAG.py for tasks to queue
+[2026-06-03T15:38:08.534+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:38:08.534+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:38:08.553+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:38:08.586+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:38:08.586+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-03T15:38:08.611+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:38:08.611+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-03T14:52:05.384041+00:00, run_after=2026-06-04T14:52:05.384041+00:00
+[2026-06-03T15:38:08.635+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/S3_UPLOAD_DAG.py took 0.107 seconds
+[2026-06-03T15:38:38.798+0000] {processor.py:157} INFO - Started process (PID=658) to work on /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:38:38.799+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/S3_UPLOAD_DAG.py for tasks to queue
+[2026-06-03T15:38:38.800+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:38:38.800+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:38:38.830+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:38:38.861+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:38:38.861+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-03T15:38:38.887+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:38:38.886+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-03T14:52:05.384041+00:00, run_after=2026-06-04T14:52:05.384041+00:00
+[2026-06-03T15:38:38.903+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/S3_UPLOAD_DAG.py took 0.115 seconds
+[2026-06-03T15:39:04.866+0000] {processor.py:157} INFO - Started process (PID=663) to work on /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:39:04.867+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/S3_UPLOAD_DAG.py for tasks to queue
+[2026-06-03T15:39:04.867+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:39:04.867+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:39:04.883+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:39:05.026+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:39:05.026+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-03T15:39:05.055+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:39:05.055+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-03T14:52:05.384041+00:00, run_after=2026-06-04T14:52:05.384041+00:00
+[2026-06-03T15:39:05.074+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/S3_UPLOAD_DAG.py took 0.211 seconds
+[2026-06-03T15:39:19.137+0000] {processor.py:157} INFO - Started process (PID=668) to work on /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:39:19.138+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/S3_UPLOAD_DAG.py for tasks to queue
+[2026-06-03T15:39:19.139+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:39:19.139+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:39:19.158+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:39:19.170+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:39:19.170+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-03T15:39:19.196+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:39:19.196+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-03T14:52:05.384041+00:00, run_after=2026-06-04T14:52:05.384041+00:00
+[2026-06-03T15:39:19.213+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/S3_UPLOAD_DAG.py took 0.080 seconds
+[2026-06-03T15:41:18.933+0000] {processor.py:157} INFO - Started process (PID=151) to work on /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:41:18.934+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/S3_UPLOAD_DAG.py for tasks to queue
+[2026-06-03T15:41:18.935+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:41:18.934+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:41:18.954+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:41:18.965+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:41:18.965+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-03T15:41:18.995+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:41:18.994+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-03T14:52:05.384041+00:00, run_after=2026-06-04T14:52:05.384041+00:00
+[2026-06-03T15:41:19.013+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/S3_UPLOAD_DAG.py took 0.083 seconds
+[2026-06-03T15:41:49.060+0000] {processor.py:157} INFO - Started process (PID=160) to work on /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:41:49.061+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/S3_UPLOAD_DAG.py for tasks to queue
+[2026-06-03T15:41:49.062+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:41:49.061+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:41:49.079+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:41:49.105+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:41:49.105+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-03T15:41:49.127+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:41:49.127+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-03T14:52:05.384041+00:00, run_after=2026-06-04T14:52:05.384041+00:00
+[2026-06-03T15:41:49.142+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/S3_UPLOAD_DAG.py took 0.086 seconds
+[2026-06-03T15:42:19.266+0000] {processor.py:157} INFO - Started process (PID=168) to work on /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:42:19.266+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/S3_UPLOAD_DAG.py for tasks to queue
+[2026-06-03T15:42:19.267+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:42:19.267+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:42:19.280+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:42:19.302+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:42:19.302+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-03T15:42:19.322+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:42:19.322+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-03T14:52:05.384041+00:00, run_after=2026-06-04T14:52:05.384041+00:00
+[2026-06-03T15:42:19.338+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/S3_UPLOAD_DAG.py took 0.074 seconds
+[2026-06-03T15:42:49.453+0000] {processor.py:157} INFO - Started process (PID=173) to work on /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:42:49.454+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/S3_UPLOAD_DAG.py for tasks to queue
+[2026-06-03T15:42:49.456+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:42:49.455+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:42:49.476+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:42:49.498+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:42:49.498+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-03T15:42:49.516+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:42:49.516+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-03T14:52:05.384041+00:00, run_after=2026-06-04T14:52:05.384041+00:00
+[2026-06-03T15:42:49.532+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/S3_UPLOAD_DAG.py took 0.085 seconds
+[2026-06-03T15:43:19.614+0000] {processor.py:157} INFO - Started process (PID=178) to work on /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:43:19.615+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/S3_UPLOAD_DAG.py for tasks to queue
+[2026-06-03T15:43:19.616+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:43:19.615+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:43:19.627+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:43:19.651+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:43:19.650+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-03T15:43:19.670+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:43:19.670+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-03T14:52:05.384041+00:00, run_after=2026-06-04T14:52:05.384041+00:00
+[2026-06-03T15:43:19.684+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/S3_UPLOAD_DAG.py took 0.073 seconds
+[2026-06-03T15:43:49.799+0000] {processor.py:157} INFO - Started process (PID=183) to work on /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:43:49.800+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/S3_UPLOAD_DAG.py for tasks to queue
+[2026-06-03T15:43:49.801+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:43:49.801+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:43:49.819+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:43:49.841+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:43:49.841+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-03T15:43:49.861+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:43:49.861+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-03T14:52:05.384041+00:00, run_after=2026-06-04T14:52:05.384041+00:00
+[2026-06-03T15:43:49.875+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/S3_UPLOAD_DAG.py took 0.080 seconds
+[2026-06-03T15:44:19.934+0000] {processor.py:157} INFO - Started process (PID=188) to work on /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:44:19.943+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/S3_UPLOAD_DAG.py for tasks to queue
+[2026-06-03T15:44:19.944+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:44:19.944+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:44:19.957+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:44:19.978+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:44:19.978+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-03T15:44:19.997+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:44:19.997+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-03T14:52:05.384041+00:00, run_after=2026-06-04T14:52:05.384041+00:00
+[2026-06-03T15:44:20.012+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/S3_UPLOAD_DAG.py took 0.081 seconds
+[2026-06-03T15:44:50.144+0000] {processor.py:157} INFO - Started process (PID=193) to work on /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:44:50.145+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/S3_UPLOAD_DAG.py for tasks to queue
+[2026-06-03T15:44:50.146+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:44:50.146+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:44:50.161+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:44:50.183+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:44:50.183+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-03T15:44:50.203+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:44:50.203+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-03T14:52:05.384041+00:00, run_after=2026-06-04T14:52:05.384041+00:00
+[2026-06-03T15:44:50.220+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/S3_UPLOAD_DAG.py took 0.078 seconds
+[2026-06-03T15:45:20.265+0000] {processor.py:157} INFO - Started process (PID=198) to work on /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:45:20.274+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/S3_UPLOAD_DAG.py for tasks to queue
+[2026-06-03T15:45:20.274+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:45:20.274+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:45:20.287+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:45:20.308+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:45:20.308+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-03T15:45:20.351+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:45:20.350+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-03T14:52:05.384041+00:00, run_after=2026-06-04T14:52:05.384041+00:00
+[2026-06-03T15:45:20.368+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/S3_UPLOAD_DAG.py took 0.107 seconds
+[2026-06-03T15:45:50.480+0000] {processor.py:157} INFO - Started process (PID=203) to work on /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:45:50.481+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/S3_UPLOAD_DAG.py for tasks to queue
+[2026-06-03T15:45:50.482+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:45:50.481+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:45:50.493+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/S3_UPLOAD_DAG.py
+[2026-06-03T15:45:50.513+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:45:50.513+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-03T15:45:50.542+0000] {logging_mixin.py:154} INFO - [2026-06-03T15:45:50.541+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-03T14:52:05.384041+00:00, run_after=2026-06-04T14:52:05.384041+00:00
+[2026-06-03T15:45:50.557+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/S3_UPLOAD_DAG.py took 0.082 seconds

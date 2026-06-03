@@ -1,0 +1,7 @@
+# Add any custom Python packages here
+pandas
+requests
+psycopg2-binary
+apache-airflow-providers-amazon==8.18.0
+apache-airflow-providers-postgres==5.6.1
+boto3>=1.28.0
