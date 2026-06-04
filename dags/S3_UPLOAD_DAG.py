@@ -176,9 +176,11 @@ def choose_nvd_path(**kwargs):
     
     if s3.check_for_key("bronze/nvd/initial/nvd_cves_full.json", S3_BUCKET):
         logging.info("Initial NVD found in S3. Running incremental.")
+        kwargs['ti'].xcom_push(key='run_type', value='incremental')
         return 'nvd_incremental'
     
     logging.info("No initial NVD in S3. Running initial load.")
+    kwargs['ti'].xcom_push(key='run_type', value='initial')  # ← Save note
     return 'nvd_initial_load'
 
 # ============================
@@ -234,19 +236,16 @@ def validate_bronze(**kwargs):
     today_str = datetime.utcnow().strftime('%Y-%m-%d')
     s3 = S3Hook(aws_conn_id='aws_default')
     
-    # Check if initial exists in S3
-    has_initial = s3.check_for_key("bronze/nvd/initial/nvd_cves_full.json", S3_BUCKET)
+    run_type = kwargs['ti'].xcom_pull(task_ids='choose_nvd_path', key='run_type')
     
-    if not has_initial:
-        # First run ever
+    if run_type == 'initial':
         keys = [
-            f"bronze/nvd/initial/nvd_cves_full.json",
+            "bronze/nvd/initial/nvd_cves_full.json",
             f"bronze/cisa_kev/{today_str}/cisa_kev.json",
             f"bronze/epss/{today_str}/epss_scores.json",
             f"bronze/assets/{today_str}/asset_inventory.csv"
         ]
     else:
-        # Normal daily run
         keys = [
             f"bronze/nvd/{today_str}/nvd_cves.json",
             f"bronze/cisa_kev/{today_str}/cisa_kev.json",
@@ -304,11 +303,12 @@ task_end = PythonOperator(task_id='end', python_callable=lambda: logging.info("=
 
 # Dependencies
 start >> task_choose_nvd
+
+# CISA, EPSS, Assets start immediately after branching decision
+task_choose_nvd >> [task_cisa, task_epss, task_assets]
+
+# NVD tasks also start after branching
 task_choose_nvd >> [task_nvd_initial, task_nvd_daily]
 
-# Set cross-dependencies: both NVD tasks → all source tasks
-task_nvd_initial >> [task_cisa, task_epss, task_assets]
-task_nvd_daily >> [task_cisa, task_epss, task_assets]
-
-# Sources → validate → end
-[task_cisa, task_epss, task_assets] >> task_validate >> task_end
+# Validation waits for BOTH the chosen NVD task AND all source tasks
+[task_nvd_initial, task_nvd_daily, task_cisa, task_epss, task_assets] >> task_validate >> task_end
