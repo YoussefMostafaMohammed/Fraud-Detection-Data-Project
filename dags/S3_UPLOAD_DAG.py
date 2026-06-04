@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.python import PythonOperator, BranchPythonOperator
+from airflow.operators.empty import EmptyOperator
 from airflow.providers.amazon.aws.hooks.s3 import S3Hook
 import requests
 import json
@@ -83,8 +84,7 @@ def fetch_nvd_initial(**kwargs):
     upload_to_s3(filename, "bronze/nvd/initial/nvd_cves_full.json")
     
     # FIX: Add timezone suffix
-    write_file(NVD_LAST_RUN_FILE, datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000 UTC-00:00"))
-    
+    write_file(NVD_LAST_RUN_FILE, datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000Z"))    
     logging.info("=== NVD INITIAL LOAD COMPLETE ===")
 
 # ============================
@@ -96,12 +96,11 @@ def fetch_nvd_incremental(**kwargs):
     if not s3.check_for_key("bronze/nvd/initial/nvd_cves_full.json", S3_BUCKET):
         raise Exception("Initial NVD file not found in S3! Run nvd_initial_load first.")
     
-    today = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000 UTC-00:00")
+    today = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000Z")
     last_run = read_file(NVD_LAST_RUN_FILE)
-    
     if not last_run:
-        last_run = (datetime.utcnow() - timedelta(days=1)).strftime("%Y-%m-%dT%H:%M:%S.000 UTC-00:00")
-    
+        last_run = (datetime.utcnow() - timedelta(days=1)).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+
     url = "https://services.nvd.nist.gov/rest/json/cves/2.0"
     results_per_page = 2000
     all_results = []
@@ -109,14 +108,14 @@ def fetch_nvd_incremental(**kwargs):
     logging.info(f"=== NVD INCREMENTAL: {last_run} to {today} ===")
 
     # FIX: Chunk into 120-day windows (NVD API limit)
-    last_run_dt = datetime.strptime(last_run.replace(" UTC-00:00", ""), "%Y-%m-%dT%H:%M:%S.%f")
+    last_run_dt = datetime.strptime(last_run.replace("Z", ""), "%Y-%m-%dT%H:%M:%S.%f")
     today_dt = datetime.utcnow()
     
     chunk_start = last_run_dt
     while chunk_start < today_dt:
         chunk_end = min(chunk_start + timedelta(days=120), today_dt)
-        pub_start = chunk_start.strftime("%Y-%m-%dT%H:%M:%S.000 UTC-00:00")
-        pub_end = chunk_end.strftime("%Y-%m-%dT%H:%M:%S.000 UTC-00:00")
+        pub_start = chunk_start.strftime("%Y-%m-%dT%H:%M:%S.000Z")
+        pub_end = chunk_end.strftime("%Y-%m-%dT%H:%M:%S.000Z")
         
         start_index = 0
         
@@ -290,6 +289,11 @@ task_choose_nvd = BranchPythonOperator(
     python_callable=choose_nvd_path,
     dag=dag
 )
+task_nvd_join = EmptyOperator(
+    task_id='nvd_join',
+    trigger_rule='none_failed',
+    dag=dag
+)
 
 task_nvd_initial = PythonOperator(task_id='nvd_initial_load', python_callable=fetch_nvd_initial, dag=dag)
 task_nvd_daily = PythonOperator(task_id='nvd_incremental', python_callable=fetch_nvd_incremental, dag=dag)
@@ -304,11 +308,15 @@ task_end = PythonOperator(task_id='end', python_callable=lambda: logging.info("=
 # Dependencies
 start >> task_choose_nvd
 
-# CISA, EPSS, Assets start immediately after branching decision
-task_choose_nvd >> [task_cisa, task_epss, task_assets]
-
-# NVD tasks also start after branching
+# NVD branch - only one will run
 task_choose_nvd >> [task_nvd_initial, task_nvd_daily]
 
-# Validation waits for BOTH the chosen NVD task AND all source tasks
-[task_nvd_initial, task_nvd_daily, task_cisa, task_epss, task_assets] >> task_validate >> task_end
+# Join NVD branches
+task_nvd_initial >> task_nvd_join
+task_nvd_daily >> task_nvd_join
+
+# Sources run AFTER NVD completes
+task_nvd_join >> [task_cisa, task_epss, task_assets]
+
+# Validation waits for all sources
+[task_cisa, task_epss, task_assets] >> task_validate >> task_end

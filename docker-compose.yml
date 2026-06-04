@@ -20,6 +20,26 @@ x-airflow-common:
       condition: service_healthy
 
 services:
+  spark:
+    build:
+      context: .
+      dockerfile: Dockerfile.spark
+    ports:
+      - "8888:8888"
+      - "4040:4040"
+      - "18180:18080"
+    environment:
+      - PYSPARK_PYTHON=python3
+      - PYSPARK_DRIVER_PYTHON_OPTS='notebook --ip=0.0.0.0 --no-browser --allow-root'
+    volumes:
+      - ./data:/opt/airflow/data
+    deploy:
+      resources:
+        limits:
+          memory: 6G
+        reservations:
+          memory: 4G
+    
   postgres:
     image: postgres:13
     environment:

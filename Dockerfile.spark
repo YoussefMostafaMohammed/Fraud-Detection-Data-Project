@@ -1,0 +1,6 @@
+FROM quay.io/jupyter/all-spark-notebook:spark-3.5.3
+
+USER root
+RUN pip install ijson pyarrow -q
+
+USER ${NB_UID}
