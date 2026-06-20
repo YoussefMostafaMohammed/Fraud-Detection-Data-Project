@@ -221402,3 +221402,15 @@ File Path                                           PID    Runtime      # DAGs  
 /opt/airflow/dags/daily_vulnerability_ingestion.py                           1           0  0.09s           2026-06-20T14:38:19
 /opt/airflow/dags/load_gold_to_postgres.py                                   1           0  0.07s           2026-06-20T14:38:19
 ================================================================================
+[2026-06-20T14:38:58.680+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/report_hourly_dag.py                                       1           0  0.09s           2026-06-20T14:38:49
+/opt/airflow/dags/daily_vulnerability_ingestion.py                           1           0  0.09s           2026-06-20T14:38:49
+/opt/airflow/dags/load_gold_to_postgres.py                                   1           0  0.07s           2026-06-20T14:38:49
+================================================================================
+[2026-06-20T14:39:13.769+0000] {manager.py:755} INFO - Searching for files in /opt/airflow/dags
+[2026-06-20T14:39:13.771+0000] {manager.py:758} INFO - There are 3 files in /opt/airflow/dags
