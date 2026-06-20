@@ -1,7 +1,17 @@
-# Add any custom Python packages here
-pandas
-requests
-psycopg2-binary
-apache-airflow-providers-amazon==8.18.0
-apache-airflow-providers-postgres==5.6.1
+# Core dependencies
+pandas==2.2.3
+requests==2.34.2
+python-dotenv==1.0.0
+
+# Database
+psycopg2-binary==2.9.12
+
+# AWS / Airflow (only for Docker, not local venv)
 boto3>=1.28.0
+
+# Streaming - USE kafka-python-ng for Python 3.14
+kafka-python-ng==2.2.3
+
+# Dashboard
+streamlit==1.40.0
+plotly==5.24.1

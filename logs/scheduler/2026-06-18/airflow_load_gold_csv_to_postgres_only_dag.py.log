@@ -1,0 +1,60 @@
+[2026-06-18T11:31:08.207+0000] {processor.py:157} INFO - Started process (PID=14785) to work on /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:31:08.207+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py for tasks to queue
+[2026-06-18T11:31:08.208+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:31:08.208+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:31:08.219+0000] {processor.py:839} INFO - DAG(s) dict_keys(['load_gold_star_schema_csv_to_postgres']) retrieved from /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:31:08.329+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:31:08.328+0000] {manager.py:499} INFO - Created Permission View: %s
+[2026-06-18T11:31:08.337+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:31:08.337+0000] {manager.py:499} INFO - Created Permission View: %s
+[2026-06-18T11:31:08.342+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:31:08.342+0000] {manager.py:499} INFO - Created Permission View: %s
+[2026-06-18T11:31:08.343+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:31:08.343+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-18T11:31:08.352+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:31:08.352+0000] {dag.py:2963} INFO - Creating ORM DAG for load_gold_star_schema_csv_to_postgres
+[2026-06-18T11:31:08.353+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:31:08.353+0000] {dag.py:3722} INFO - Setting next_dagrun for load_gold_star_schema_csv_to_postgres to None, run_after=None
+[2026-06-18T11:31:08.371+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py took 0.167 seconds
+[2026-06-18T11:31:38.604+0000] {processor.py:157} INFO - Started process (PID=14800) to work on /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:31:38.613+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py for tasks to queue
+[2026-06-18T11:31:38.614+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:31:38.614+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:31:38.630+0000] {processor.py:839} INFO - DAG(s) dict_keys(['load_gold_star_schema_csv_to_postgres']) retrieved from /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:31:38.646+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:31:38.646+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-18T11:31:38.655+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:31:38.655+0000] {dag.py:3722} INFO - Setting next_dagrun for load_gold_star_schema_csv_to_postgres to None, run_after=None
+[2026-06-18T11:31:38.670+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py took 0.072 seconds
+[2026-06-18T11:32:08.881+0000] {processor.py:157} INFO - Started process (PID=14815) to work on /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:32:08.884+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py for tasks to queue
+[2026-06-18T11:32:08.886+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:32:08.885+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:32:08.937+0000] {processor.py:839} INFO - DAG(s) dict_keys(['load_gold_star_schema_csv_to_postgres']) retrieved from /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:32:08.982+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:32:08.982+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-18T11:32:08.998+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:32:08.997+0000] {dag.py:3722} INFO - Setting next_dagrun for load_gold_star_schema_csv_to_postgres to None, run_after=None
+[2026-06-18T11:32:09.023+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py took 0.155 seconds
+[2026-06-18T11:32:39.194+0000] {processor.py:157} INFO - Started process (PID=14830) to work on /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:32:39.203+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py for tasks to queue
+[2026-06-18T11:32:39.204+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:32:39.204+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:32:39.226+0000] {processor.py:839} INFO - DAG(s) dict_keys(['load_gold_star_schema_csv_to_postgres']) retrieved from /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:32:39.254+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:32:39.254+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-18T11:32:39.269+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:32:39.269+0000] {dag.py:3722} INFO - Setting next_dagrun for load_gold_star_schema_csv_to_postgres to None, run_after=None
+[2026-06-18T11:32:39.289+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py took 0.099 seconds
+[2026-06-18T11:33:09.525+0000] {processor.py:157} INFO - Started process (PID=14845) to work on /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:33:09.525+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py for tasks to queue
+[2026-06-18T11:33:09.526+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:33:09.526+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:33:09.538+0000] {processor.py:839} INFO - DAG(s) dict_keys(['load_gold_star_schema_csv_to_postgres']) retrieved from /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:33:09.556+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:33:09.556+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-18T11:33:09.571+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:33:09.571+0000] {dag.py:3722} INFO - Setting next_dagrun for load_gold_star_schema_csv_to_postgres to None, run_after=None
+[2026-06-18T11:33:09.588+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py took 0.066 seconds
+[2026-06-18T11:33:39.793+0000] {processor.py:157} INFO - Started process (PID=14860) to work on /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:33:39.802+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py for tasks to queue
+[2026-06-18T11:33:39.802+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:33:39.802+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:33:39.816+0000] {processor.py:839} INFO - DAG(s) dict_keys(['load_gold_star_schema_csv_to_postgres']) retrieved from /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:33:39.833+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:33:39.833+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-18T11:33:39.844+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:33:39.844+0000] {dag.py:3722} INFO - Setting next_dagrun for load_gold_star_schema_csv_to_postgres to None, run_after=None
+[2026-06-18T11:33:39.861+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py took 0.074 seconds
+[2026-06-18T11:34:10.049+0000] {processor.py:157} INFO - Started process (PID=14875) to work on /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:34:10.050+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py for tasks to queue
+[2026-06-18T11:34:10.051+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:34:10.050+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:34:10.067+0000] {processor.py:839} INFO - DAG(s) dict_keys(['load_gold_star_schema_csv_to_postgres']) retrieved from /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:34:10.091+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:34:10.091+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-18T11:34:10.106+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:34:10.106+0000] {dag.py:3722} INFO - Setting next_dagrun for load_gold_star_schema_csv_to_postgres to None, run_after=None
+[2026-06-18T11:34:10.121+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py took 0.077 seconds
+[2026-06-18T11:34:40.309+0000] {processor.py:157} INFO - Started process (PID=14890) to work on /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:34:40.318+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py for tasks to queue
+[2026-06-18T11:34:40.319+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:34:40.318+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:34:40.337+0000] {processor.py:839} INFO - DAG(s) dict_keys(['load_gold_star_schema_csv_to_postgres']) retrieved from /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py
+[2026-06-18T11:34:40.356+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:34:40.356+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-18T11:34:40.367+0000] {logging_mixin.py:154} INFO - [2026-06-18T11:34:40.367+0000] {dag.py:3722} INFO - Setting next_dagrun for load_gold_star_schema_csv_to_postgres to None, run_after=None
+[2026-06-18T11:34:40.384+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/airflow_load_gold_csv_to_postgres_only_dag.py took 0.079 seconds

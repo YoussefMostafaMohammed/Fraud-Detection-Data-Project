@@ -202,19 +202,174 @@ def fetch_cisa_kev(**kwargs):
 # ============================
 # EPSS
 # ============================
-def fetch_epss_scores(**kwargs):
-    today_str = datetime.utcnow().strftime('%Y-%m-%d')
+
+
+# ============================
+# EPSS: CONFIG
+# ============================
+EPSS_LAST_RUN_FILE = "/opt/airflow/data/epss_last_run.txt"
+
+# ============================
+# EPSS: INITIAL FULL LOAD
+# ============================
+def fetch_epss_initial(**kwargs):
+    """
+    Fetches ALL EPSS scores (~337,000 rows) using pagination.
+    EPSS API supports limit/offset parameters for batch retrieval.
+    """
     url = "https://api.first.org/data/v1/epss"
+    limit = 10000  # Max rows per request (adjust based on API limits)
+    offset = 0
+    all_results = []
     
-    response = requests.get(url, timeout=30)
-    response.raise_for_status()
+    logging.info("=== EPSS INITIAL LOAD: Fetching ALL scores ===")
+
+    while True:
+        params = {
+            "limit": limit,
+            "offset": offset,
+            "pretty": "false"  # Reduce payload size
+        }
+        
+        # Retry loop (same pattern as NVD)
+        for attempt in range(1, 6):
+            try:
+                response = requests.get(url, params=params, timeout=60)
+                response.raise_for_status()
+                break
+            except Exception as e:
+                logging.error(f"Attempt {attempt}/5 failed: {e}")
+                sleep(6)
+                if attempt == 5:
+                    raise
+        
+        # Rate limit
+        sleep(1)
+
+        data = response.json()
+        
+        # EPSS returns {"data": [...], "total": N}
+        batch = data.get("data", [])
+        total = data.get("total", 0)
+        
+        if not batch:
+            break
+            
+        all_results.extend(batch)
+        
+        logging.info(f"Progress: {len(all_results)}/{total} (offset={offset})")
+        
+        offset += limit
+        if offset >= total:
+            break
+
+    filename = f"/tmp/epss_scores_initial_{datetime.utcnow().strftime('%Y%m%d')}.json"
     
-    filename = f"/tmp/epss_scores_{today_str}.json"
+    # Save with same structure as API response for consistency
+    output = {
+        "total": len(all_results),
+        "data": all_results
+    }
+    
     with open(filename, "w") as f:
-        f.write(response.text)
+        json.dump(output, f)
     
-    upload_to_s3(filename, f"bronze/epss/{today_str}/epss_scores.json")
-    logging.info("EPSS uploaded")
+    logging.info(f"Saved {len(all_results)} EPSS scores")
+    upload_to_s3(filename, "bronze/epss/initial/epss_scores_full.json")
+    
+    # Save last run timestamp
+    write_file(EPSS_LAST_RUN_FILE, datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000Z"))
+    logging.info("=== EPSS INITIAL LOAD COMPLETE ===")
+
+
+# ============================
+# EPSS: INCREMENTAL DAILY
+# ============================
+def fetch_epss_incremental(**kwargs):
+    """
+    Fetches today's EPSS scores. EPSS updates daily, so incremental
+    fetches the latest full snapshot and we merge/deduplicate in Silver.
+    """
+    s3 = S3Hook(aws_conn_id='aws_default')
+    
+    # Check if initial exists
+    if not s3.check_for_key("bronze/epss/initial/epss_scores_full.json", S3_BUCKET):
+        raise Exception("Initial EPSS file not found in S3! Run epss_initial_load first.")
+    
+    url = "https://api.first.org/data/v1/epss"
+    limit = 10000
+    offset = 0
+    all_results = []
+    
+    today = datetime.utcnow().strftime('%Y-%m-%d')
+    logging.info(f"=== EPSS INCREMENTAL: {today} ===")
+
+    while True:
+        params = {
+            "limit": limit,
+            "offset": offset,
+            "pretty": "false"
+        }
+        
+        for attempt in range(1, 6):
+            try:
+                response = requests.get(url, params=params, timeout=60)
+                response.raise_for_status()
+                break
+            except Exception as e:
+                logging.error(f"Attempt {attempt}/5: {e}")
+                sleep(6)
+                if attempt == 5:
+                    raise
+        
+        sleep(1)
+
+        data = response.json()
+        batch = data.get("data", [])
+        total = data.get("total", 0)
+        
+        if not batch:
+            break
+            
+        all_results.extend(batch)
+        
+        logging.info(f"Progress: {len(all_results)}/{total} (offset={offset})")
+        
+        offset += limit
+        if offset >= total:
+            break
+
+    filename = f"/tmp/epss_scores_{today}.json"
+    
+    output = {
+        "total": len(all_results),
+        "data": all_results
+    }
+    
+    with open(filename, "w") as f:
+        json.dump(output, f)
+    
+    upload_to_s3(filename, f"bronze/epss/{today}/epss_scores.json")
+    logging.info(f"Uploaded {len(all_results)} EPSS scores")
+
+    write_file(EPSS_LAST_RUN_FILE, today)
+    logging.info("=== EPSS INCREMENTAL COMPLETE ===")
+
+
+# ============================
+# BRANCHING: Check S3 for EPSS
+# ============================
+def choose_epss_path(**kwargs):
+    s3 = S3Hook(aws_conn_id='aws_default')
+    
+    if s3.check_for_key("bronze/epss/initial/epss_scores_full.json", S3_BUCKET):
+        logging.info("Initial EPSS found in S3. Running incremental.")
+        kwargs['ti'].xcom_push(key='epss_run_type', value='incremental')
+        return 'epss_incremental'
+    
+    logging.info("No initial EPSS in S3. Running initial load.")
+    kwargs['ti'].xcom_push(key='epss_run_type', value='initial')
+    return 'epss_initial_load'
 
 # ============================
 # ASSETS
@@ -235,22 +390,29 @@ def validate_bronze(**kwargs):
     today_str = datetime.utcnow().strftime('%Y-%m-%d')
     s3 = S3Hook(aws_conn_id='aws_default')
     
-    run_type = kwargs['ti'].xcom_pull(task_ids='choose_nvd_path', key='run_type')
+    nvd_run_type = kwargs['ti'].xcom_pull(task_ids='choose_nvd_path', key='run_type')
+    epss_run_type = kwargs['ti'].xcom_pull(task_ids='choose_epss_path', key='epss_run_type')
     
-    if run_type == 'initial':
-        keys = [
-            "bronze/nvd/initial/nvd_cves_full.json",
-            f"bronze/cisa_kev/{today_str}/cisa_kev.json",
-            f"bronze/epss/{today_str}/epss_scores.json",
-            f"bronze/assets/{today_str}/asset_inventory.csv"
-        ]
+    # Build key list based on both run types
+    keys = []
+    
+    # NVD path
+    if nvd_run_type == 'initial':
+        keys.append("bronze/nvd/initial/nvd_cves_full.json")
     else:
-        keys = [
-            f"bronze/nvd/{today_str}/nvd_cves.json",
-            f"bronze/cisa_kev/{today_str}/cisa_kev.json",
-            f"bronze/epss/{today_str}/epss_scores.json",
-            f"bronze/assets/{today_str}/asset_inventory.csv"
-        ]
+        keys.append(f"bronze/nvd/{today_str}/nvd_cves.json")
+    
+    # EPSS path
+    if epss_run_type == 'initial':
+        keys.append("bronze/epss/initial/epss_scores_full.json")
+    else:
+        keys.append(f"bronze/epss/{today_str}/epss_scores.json")
+    
+    # Always these
+    keys.extend([
+        f"bronze/cisa_kev/{today_str}/cisa_kev.json",
+        f"bronze/assets/{today_str}/asset_inventory.csv"
+    ])
     
     for key in keys:
         if not s3.check_for_key(key, S3_BUCKET):
@@ -258,7 +420,6 @@ def validate_bronze(**kwargs):
         logging.info(f"FOUND: {key}")
     
     logging.info("All bronze files validated")
-
 # ============================
 # DAG
 # ============================
@@ -289,34 +450,61 @@ task_choose_nvd = BranchPythonOperator(
     python_callable=choose_nvd_path,
     dag=dag
 )
+
 task_nvd_join = EmptyOperator(
     task_id='nvd_join',
     trigger_rule='none_failed',
     dag=dag
 )
 
+task_choose_epss = BranchPythonOperator(
+    task_id='choose_epss_path',
+    python_callable=choose_epss_path,
+    dag=dag
+)
+task_epss_join = EmptyOperator(
+    task_id='epss_join',
+    trigger_rule='none_failed',
+    dag=dag
+)
+
+task_epss_initial = PythonOperator(
+    task_id='epss_initial_load', 
+    python_callable=fetch_epss_initial, 
+    dag=dag
+)
+task_epss_daily = PythonOperator(
+    task_id='epss_incremental', 
+    python_callable=fetch_epss_incremental, 
+    dag=dag
+)
+
+
 task_nvd_initial = PythonOperator(task_id='nvd_initial_load', python_callable=fetch_nvd_initial, dag=dag)
 task_nvd_daily = PythonOperator(task_id='nvd_incremental', python_callable=fetch_nvd_incremental, dag=dag)
 
 task_cisa = PythonOperator(task_id='fetch_cisa_kev', python_callable=fetch_cisa_kev,trigger_rule="none_failed", dag=dag)
-task_epss = PythonOperator(task_id='fetch_epss_scores', python_callable=fetch_epss_scores,trigger_rule="none_failed", dag=dag)
 task_assets = PythonOperator(task_id='load_assets', python_callable=load_asset_inventory,trigger_rule="none_failed", dag=dag)
 
 task_validate = PythonOperator(task_id='validate_bronze', python_callable=validate_bronze,trigger_rule="none_failed", dag=dag)
 task_end = PythonOperator(task_id='end', python_callable=lambda: logging.info("=== END ==="),trigger_rule="none_failed", dag=dag)
 
 # Dependencies
-start >> task_choose_nvd
+# Dependencies
+start >> [task_choose_nvd, task_choose_epss]
 
-# NVD branch - only one will run
+# NVD branch
 task_choose_nvd >> [task_nvd_initial, task_nvd_daily]
-
-# Join NVD branches
 task_nvd_initial >> task_nvd_join
 task_nvd_daily >> task_nvd_join
 
-# Sources run AFTER NVD completes
-task_nvd_join >> [task_cisa, task_epss, task_assets]
+# EPSS branch
+task_choose_epss >> [task_epss_initial, task_epss_daily]
+task_epss_initial >> task_epss_join
+task_epss_daily >> task_epss_join
 
-# Validation waits for all sources
-[task_cisa, task_epss, task_assets] >> task_validate >> task_end
+# CISA and Assets run directly (no branching needed)
+start >> [task_cisa, task_assets]
+
+# Validation waits for ALL sources
+[task_nvd_join, task_epss_join, task_cisa, task_assets] >> task_validate >> task_end

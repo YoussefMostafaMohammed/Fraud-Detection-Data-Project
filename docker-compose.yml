@@ -1,4 +1,7 @@
-version: '3.8'
+# ============================================
+# FRAUD DETECTION - KAFKA + SPARK + AIRFLOW
+# ============================================
+
 x-airflow-common:
   &airflow-common
   build: .
@@ -19,29 +22,104 @@ x-airflow-common:
     postgres:
       condition: service_healthy
 
+networks:
+  data-streaming:
+    driver: bridge
+
 services:
+  # ==================== ZOOKEEPER ====================
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.1
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - data-streaming
+
+  # ==================== KAFKA BROKER ====================
+  kafka:
+    image: confluentinc/cp-kafka:7.5.1
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:29092,PLAINTEXT_HOST://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+    depends_on:
+      - zookeeper
+    networks:
+      - data-streaming
+
+  # ==================== KAFKA UI ====================
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    ports:
+      - "8090:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
+    depends_on:
+      - kafka
+    networks:
+      - data-streaming
+
+  # ==================== PYTHON PRODUCER ====================
+  producer:
+    image: python:3.11-slim
+    container_name: producer
+    volumes:
+      - ./producer:/app
+    working_dir: /app
+    command: >
+      bash -c "pip install --no-cache-dir -r requirements.txt && python producer.py"
+    depends_on:
+      - kafka
+    networks:
+      - data-streaming
+    restart: on-failure
+
+  # ==================== SPARK ====================
   spark:
     build:
       context: .
       dockerfile: Dockerfile.spark
+    container_name: spark
     ports:
       - "8888:8888"
       - "4040:4040"
       - "18180:18080"
     environment:
       - PYSPARK_PYTHON=python3
-      - PYSPARK_DRIVER_PYTHON_OPTS='notebook --ip=0.0.0.0 --no-browser --allow-root'
+      - PYSPARK_DRIVER_PYTHON=python3
+      - PYSPARK_SUBMIT_ARGS=--packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.3 pyspark-shell
     volumes:
       - ./data:/opt/airflow/data
+      - ./scripts:/scripts
+    depends_on:
+      - kafka
+    networks:
+      - data-streaming
     deploy:
       resources:
         limits:
           memory: 6G
         reservations:
           memory: 4G
-    
+
+  # ==================== AIRFLOW & POSTGRES ====================
   postgres:
     image: postgres:13
+    container_name: postgres
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
@@ -53,6 +131,22 @@ services:
       interval: 5s
       retries: 5
     restart: always
+    networks:
+      - data-streaming
+  # ==================== STREAMING POSTGRES ====================
+  streaming-postgres:
+    image: postgres:13
+    container_name: streaming-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: aya
+      POSTGRES_DB: cyber_threat_db
+    ports:
+      - "5433:5432"  # Different port to avoid conflict
+    volumes:
+      - streaming-postgres-data:/var/lib/postgresql/data
+    networks:
+      - data-streaming
 
   airflow-init:
     <<: *airflow-common
@@ -74,6 +168,8 @@ services:
       _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-admin}
     depends_on:
       <<: *airflow-common-depends-on
+    networks:
+      - data-streaming
 
   airflow-webserver:
     <<: *airflow-common
@@ -90,6 +186,8 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
+    networks:
+      - data-streaming
 
   airflow-scheduler:
     <<: *airflow-common
@@ -99,6 +197,9 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
+    networks:
+      - data-streaming
 
 volumes:
   postgres-db-volume:
+  streaming-postgres-data:
