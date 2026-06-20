@@ -12150,3 +12150,31 @@
 [2026-06-20T14:35:48.003+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:35:48.003+0000] {dag.py:2941} INFO - Sync 1 DAGs
 [2026-06-20T14:35:48.022+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:35:48.022+0000] {dag.py:3722} INFO - Setting next_dagrun for report_hourly_dag to 2026-06-20T01:58:00+00:00, run_after=2026-06-20T01:59:00+00:00
 [2026-06-20T14:35:48.037+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/report_hourly_dag.py took 0.068 seconds
+[2026-06-20T14:36:18.258+0000] {processor.py:157} INFO - Started process (PID=36393) to work on /opt/airflow/dags/report_hourly_dag.py
+[2026-06-20T14:36:18.259+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/report_hourly_dag.py for tasks to queue
+[2026-06-20T14:36:18.259+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:36:18.259+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/report_hourly_dag.py
+[2026-06-20T14:36:18.270+0000] {processor.py:839} INFO - DAG(s) dict_keys(['report_hourly_dag']) retrieved from /opt/airflow/dags/report_hourly_dag.py
+[2026-06-20T14:36:18.290+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:36:18.290+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-20T14:36:18.307+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:36:18.307+0000] {dag.py:3722} INFO - Setting next_dagrun for report_hourly_dag to 2026-06-20T01:58:00+00:00, run_after=2026-06-20T01:59:00+00:00
+[2026-06-20T14:36:18.321+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/report_hourly_dag.py took 0.067 seconds
+[2026-06-20T14:36:48.530+0000] {processor.py:157} INFO - Started process (PID=36408) to work on /opt/airflow/dags/report_hourly_dag.py
+[2026-06-20T14:36:48.531+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/report_hourly_dag.py for tasks to queue
+[2026-06-20T14:36:48.533+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:36:48.532+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/report_hourly_dag.py
+[2026-06-20T14:36:48.550+0000] {processor.py:839} INFO - DAG(s) dict_keys(['report_hourly_dag']) retrieved from /opt/airflow/dags/report_hourly_dag.py
+[2026-06-20T14:36:48.573+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:36:48.573+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-20T14:36:48.601+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:36:48.600+0000] {dag.py:3722} INFO - Setting next_dagrun for report_hourly_dag to 2026-06-20T01:58:00+00:00, run_after=2026-06-20T01:59:00+00:00
+[2026-06-20T14:36:48.617+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/report_hourly_dag.py took 0.094 seconds
+[2026-06-20T14:37:18.795+0000] {processor.py:157} INFO - Started process (PID=36423) to work on /opt/airflow/dags/report_hourly_dag.py
+[2026-06-20T14:37:18.795+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/report_hourly_dag.py for tasks to queue
+[2026-06-20T14:37:18.796+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:37:18.796+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/report_hourly_dag.py
+[2026-06-20T14:37:18.803+0000] {processor.py:839} INFO - DAG(s) dict_keys(['report_hourly_dag']) retrieved from /opt/airflow/dags/report_hourly_dag.py
+[2026-06-20T14:37:18.820+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:37:18.820+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-20T14:37:18.844+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:37:18.844+0000] {dag.py:3722} INFO - Setting next_dagrun for report_hourly_dag to 2026-06-20T01:58:00+00:00, run_after=2026-06-20T01:59:00+00:00
+[2026-06-20T14:37:18.860+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/report_hourly_dag.py took 0.068 seconds
+[2026-06-20T14:37:49.015+0000] {processor.py:157} INFO - Started process (PID=36438) to work on /opt/airflow/dags/report_hourly_dag.py
+[2026-06-20T14:37:49.016+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/report_hourly_dag.py for tasks to queue
+[2026-06-20T14:37:49.017+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:37:49.017+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/report_hourly_dag.py
+[2026-06-20T14:37:49.027+0000] {processor.py:839} INFO - DAG(s) dict_keys(['report_hourly_dag']) retrieved from /opt/airflow/dags/report_hourly_dag.py
+[2026-06-20T14:37:49.042+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:37:49.042+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-20T14:37:49.059+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:37:49.059+0000] {dag.py:3722} INFO - Setting next_dagrun for report_hourly_dag to 2026-06-20T01:58:00+00:00, run_after=2026-06-20T01:59:00+00:00
+[2026-06-20T14:37:49.073+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/report_hourly_dag.py took 0.061 seconds

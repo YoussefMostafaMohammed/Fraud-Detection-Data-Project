@@ -5,3 +5,8 @@ data/*
 __pycache__/
 *.pyc
 .env
+
+logs/*
+
+logs
+logs/

@@ -12150,3 +12150,31 @@
 [2026-06-20T14:35:48.081+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:35:48.081+0000] {dag.py:2941} INFO - Sync 1 DAGs
 [2026-06-20T14:35:48.096+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:35:48.096+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-19T14:35:48.096651+00:00, run_after=2026-06-20T14:35:48.096651+00:00
 [2026-06-20T14:35:48.109+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/load_gold_to_postgres.py took 0.065 seconds
+[2026-06-20T14:36:18.335+0000] {processor.py:157} INFO - Started process (PID=36400) to work on /opt/airflow/dags/load_gold_to_postgres.py
+[2026-06-20T14:36:18.336+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/load_gold_to_postgres.py for tasks to queue
+[2026-06-20T14:36:18.336+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:36:18.336+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/load_gold_to_postgres.py
+[2026-06-20T14:36:18.347+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/load_gold_to_postgres.py
+[2026-06-20T14:36:18.366+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:36:18.365+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-20T14:36:18.381+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:36:18.381+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-19T14:36:18.380872+00:00, run_after=2026-06-20T14:36:18.380872+00:00
+[2026-06-20T14:36:18.394+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/load_gold_to_postgres.py took 0.061 seconds
+[2026-06-20T14:36:48.625+0000] {processor.py:157} INFO - Started process (PID=36415) to work on /opt/airflow/dags/load_gold_to_postgres.py
+[2026-06-20T14:36:48.625+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/load_gold_to_postgres.py for tasks to queue
+[2026-06-20T14:36:48.626+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:36:48.626+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/load_gold_to_postgres.py
+[2026-06-20T14:36:48.637+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/load_gold_to_postgres.py
+[2026-06-20T14:36:48.656+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:36:48.656+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-20T14:36:48.672+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:36:48.672+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-19T14:36:48.672463+00:00, run_after=2026-06-20T14:36:48.672463+00:00
+[2026-06-20T14:36:48.686+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/load_gold_to_postgres.py took 0.063 seconds
+[2026-06-20T14:37:18.873+0000] {processor.py:157} INFO - Started process (PID=36430) to work on /opt/airflow/dags/load_gold_to_postgres.py
+[2026-06-20T14:37:18.873+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/load_gold_to_postgres.py for tasks to queue
+[2026-06-20T14:37:18.874+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:37:18.873+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/load_gold_to_postgres.py
+[2026-06-20T14:37:18.885+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/load_gold_to_postgres.py
+[2026-06-20T14:37:18.905+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:37:18.905+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-20T14:37:18.920+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:37:18.920+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-19T14:37:18.920365+00:00, run_after=2026-06-20T14:37:18.920365+00:00
+[2026-06-20T14:37:18.933+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/load_gold_to_postgres.py took 0.063 seconds
+[2026-06-20T14:37:49.083+0000] {processor.py:157} INFO - Started process (PID=36445) to work on /opt/airflow/dags/load_gold_to_postgres.py
+[2026-06-20T14:37:49.084+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/load_gold_to_postgres.py for tasks to queue
+[2026-06-20T14:37:49.084+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:37:49.084+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/load_gold_to_postgres.py
+[2026-06-20T14:37:49.096+0000] {processor.py:839} INFO - DAG(s) dict_keys(['daily_vulnerability_ingestion']) retrieved from /opt/airflow/dags/load_gold_to_postgres.py
+[2026-06-20T14:37:49.116+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:37:49.116+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2026-06-20T14:37:49.131+0000] {logging_mixin.py:154} INFO - [2026-06-20T14:37:49.131+0000] {dag.py:3722} INFO - Setting next_dagrun for daily_vulnerability_ingestion to 2026-06-19T14:37:49.131360+00:00, run_after=2026-06-20T14:37:49.131360+00:00
+[2026-06-20T14:37:49.142+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/load_gold_to_postgres.py took 0.061 seconds
